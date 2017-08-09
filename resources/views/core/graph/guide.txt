@@ -1,0 +1,230 @@
+{app_name} [Your API Collection]
+======
+# 
+
+## OAuth
+### Get Access Token [/oauth/token]
+To get access token with client `ID` and `Secret` for all API authentication.
+# 
+> Method: `POST`
+
+> Parameters  (application/json)
+
+    {
+        "grant_type": required|string|255,
+        "client_id": required|integer|11,
+        "client_secret": required|string|255
+    }
+
+> Response (application/json)
+
+    {
+        "token_type": string,
+        "expires_in": string,
+        "access_token": string
+    }
+
+## User
+### Create User [/api/user]
+To create new user for login authentication.
+# 
+> Method: `POST`
+
+> Authorization: `access_token`
+
+> Parameters  (application/json)
+
+    {
+        "username": required|string|255,
+        "email": required|string|255,
+        "first_name": required|string|255,
+        "last_name": required|string|255,
+        "password": required|string|255,
+        "password_confirmation": required|string|255
+    }
+
+> Response (application/json)
+
+    {
+        "Thanks for registering! . Please check your inbox and follow activation link"
+    }
+
+# 
+### Activate Account [/api/activation]
+To activate an account that you created.
+# 
+> Method: `POST`
+
+> Authorization: `access_token`
+
+> Parameters  (application/json)
+
+    {
+        "code": required|string|6
+    }
+
+> Response (application/json)
+
+    {
+        "Your account is active now."
+    }
+
+# 
+### Login to Account [/api/login]
+To login to your an account.
+# 
+> Method: `POST`
+
+> Authorization: `access_token`
+
+> Parameters (application/json)
+
+    {
+        "email": required|string|255,
+        "password": required|string|255
+    }
+
+> Response (application/json)
+
+    {
+        "id": integer,
+        "group_id": integer|null,
+        "username": string|null,
+        "email": string|null,
+        "first_name": string|null,
+        "last_name": string|null,
+        "avatar": string|null,
+        "active": boolean|null,
+        "login_attempt": integer|null,
+        "last_login": string|null,
+        "updated_at": string,
+        "reminder": required|null,
+        "activation": integer|null,
+        "last_activity": integer|null,
+        "created_at": string
+    }
+
+# 
+### Get User [/api/user/{id}]
+To get user detail info...
+# 
+> Method: `GET`
+
+> Authorization: `access_token`
+
+> Parameters (application/json)
+
+# 
+
+> Response (application/json)
+
+    {
+        "id": integer,
+        "group_id": integer|null,
+        "username": string|null,
+        "email": string|null,
+        "first_name": string|null,
+        "last_name": string|null,
+        "avatar": string|null,
+        "active": boolean|null,
+        "login_attempt": integer|null,
+        "last_login": string|null,
+        "updated_at": string|null,
+        "reminder": string|null,
+        "activation": string|null,
+        "last_activity": string|null,
+        "created_at": string|null
+    }
+
+# 
+### Update User [/api/user/{id}]
+To update user detail information that you want.
+# 
+> Method: `POST`
+
+> Authorization: `access_token`
+
+> Parameters  (application/json)
+
+    {
+        "username": required|string|255,
+        "email": required|string|255,
+        "first_name": required|string|255,
+        "last_name": required|string|255
+    }
+
+> Response (application/json)
+
+    {
+        "id": integer,
+        "group_id": integer|null,
+        "username": string|null,
+        "email": string|null,
+        "first_name": string|null,
+        "last_name": string|null,
+        "avatar": string|null,
+        "active": boolean|null,
+        "login_attempt": integer|null,
+        "last_login": string|null,
+        "updated_at": string|null,
+        "reminder": string|null,
+        "activation": string|null,
+        "last_activity": string|null,
+        "created_at": string|null
+    }
+
+# 
+### Change Password [/api/password/{id}]
+To change your account password that you want.
+# 
+> Method: `POST`
+
+> Authorization: `access_token`
+
+> Parameters  (application/json)
+
+    {
+        "password": required|string|255,
+        "password_confirmation": required|string|255
+    }
+
+> Response (application/json)
+
+    {
+        "Password has been saved.!"
+    }
+
+# 
+### Change Avatar [/api/avatar/{id}]
+To update user avatar(image) that you want.
+# 
+> Method: `POST`
+
+> Authorization: `access_token`
+
+> Parameters
+
+    avatar: required|file
+
+> Response (application/json)
+
+    {
+        "id": integer,
+        "group_id": integer|null,
+        "username": string|null,
+        "email": string|null,
+        "first_name": string|null,
+        "last_name": string|null,
+        "avatar": string|null,
+        "active": boolean|null,
+        "login_attempt": integer|null,
+        "last_login": string|null,
+        "updated_at": string|null,
+        "reminder": string|null,
+        "activation": string|null,
+        "last_activity": string|null,
+        "created_at": string|null
+    }
+
+# 
+
